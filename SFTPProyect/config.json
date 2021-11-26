@@ -1,0 +1,13 @@
+{
+  "ServerSFTP": "181.30.184.162",
+  "UserSFTP": "argus",
+  "PassSFTP": "ArgUs$08",
+  "PortSFTP": 2022,
+  "RemoteDirPeticiones": "/peticiones/",
+  "RemoteDirResultados": "/resultados/",
+  "LocalDirPeticiones": "C:\\SFTP\\peticiones",
+  "LocalDirResultados": "C:\\SFTP\\resultados",
+  "LocalDirBackUp": "C:\\SFTP\\peticiones\\bkp",
+  "RemoteDelete": true,
+  "T": 1000
+}
