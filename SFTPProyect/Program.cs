@@ -13,8 +13,10 @@ namespace SFTPProyect
         static void Main(string[] args)
         {
             config = ini();
-            Timer t = new Timer(eventoTimer,0 , 0, config.T*1000);
-            while(true)
+            //System.Timers.Timer t = new System.Timers.Timer(eventoTimer,0 , 0, config.T*1000);
+            
+
+            while (true)
             {
                 string a = Console.ReadLine();
                 if (a == "exit")
@@ -40,19 +42,20 @@ namespace SFTPProyect
                     xftp = new FTP(config.ServerSFTP, config.UserSFTP, config.PassSFTP, config.PortSFTP);
                     break;
                 default:
+                    xftp = null;
                     Tools.printlog("No se ha definiodo un tipo correcto de conxion. Puede ser FTP ó SFTP");
                     break;
             }
             
             if (config.Upload == 1)
             {
-                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando derivaciones a enviar");
+                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando archivos a enviar");
                 xftp.upload(config.RemoteDirPeticiones, config.LocalDirPeticiones, config.LocalDirBackUp, config.Ext);
 
             }
             if (config.Download == 1)
             {
-                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando derivaciones a descargar");
+                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando archivos para descargar");
                 xftp.download(config.RemoteDirResultados, config.LocalDirResultados, config.RemoteDelete,config.Ext);
             }
         }

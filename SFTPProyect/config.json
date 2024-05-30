@@ -1,18 +1,18 @@
 {
-  "TipoConexion": "FTP",// Puede ser FTP ó SFTP
+  "TipoConexion": "FTP", // Puede ser FTP ó SFTP
   "ServerSFTP": "ftp.optimi.com.ar", // "181.30.184.162"
   "UserSFTP": "optimico", //"argus"
   "PassSFTP": "=aT;$6@*xtmf)DGp", //"ArgUs$08"
   "PortSFTP": 21, //2022
   "RemoteDirPeticiones": "/2023PRUEBA/TOPO/", // "/peticiones/",
-  "RemoteDirResultados": "/resultados/3256/",
+  "RemoteDirResultados": "/2023PRUEBA/TOPO/", //"/resultados/3256/",
   "LocalDirPeticiones": "C:\\SFTP\\peticiones",
-  "LocalDirResultados": "C:\\SFTP\\resultados",
+  "LocalDirResultados": "C:\\SFTP\\Loop",
   "LocalDirBackUp": "C:\\SFTP\\peticiones\\bkp",
   "RemoteDelete": true,
-  "T": 1000,
-  "Ext": [ "txt", "res" ],
+  "T": 10,
+  "Ext": [ "txt", "res", "xlsx" ],
   "Upload": 1,
-  "Download": 0
+  "Download": 1
 
 }
