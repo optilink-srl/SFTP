@@ -6,6 +6,7 @@ namespace SFTPProyect
 {
     public class Config
     {
+        public string TipoConexion{get;set;}
         public string ServerSFTP { get; set; }
         public string UserSFTP { get; set; }
         public string PassSFTP { get; set; }

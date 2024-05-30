@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using FTPProyect;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading;
+using System.Timers;
 
 namespace SFTPProyect
 {
@@ -28,17 +30,30 @@ namespace SFTPProyect
         }
         private static void eventoTimer(object State)
         {
-            SFTP sftp = new SFTP(config.ServerSFTP, config.UserSFTP, config.PassSFTP, config.PortSFTP);
+            IxFTP xftp;
+            switch (config.TipoConexion)
+            {
+                case "SFTP":
+                    xftp = new SFTP(config.ServerSFTP, config.UserSFTP, config.PassSFTP, config.PortSFTP);
+                    break;
+                case "FTP":
+                    xftp = new FTP(config.ServerSFTP, config.UserSFTP, config.PassSFTP, config.PortSFTP);
+                    break;
+                default:
+                    Tools.printlog("No se ha definiodo un tipo correcto de conxion. Puede ser FTP ó SFTP");
+                    break;
+            }
+            
             if (config.Upload == 1)
             {
                 Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando derivaciones a enviar");
-                sftp.upload(config.RemoteDirPeticiones, config.LocalDirPeticiones, config.LocalDirBackUp, config.Ext);
+                xftp.upload(config.RemoteDirPeticiones, config.LocalDirPeticiones, config.LocalDirBackUp, config.Ext);
 
             }
             if (config.Download == 1)
             {
                 Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando derivaciones a descargar");
-                sftp.download(config.RemoteDirResultados, config.LocalDirResultados, config.RemoteDelete,config.Ext);
+                xftp.download(config.RemoteDirResultados, config.LocalDirResultados, config.RemoteDelete,config.Ext);
             }
         }
 

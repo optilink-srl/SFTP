@@ -1,4 +1,5 @@
 {
+  "TipoConexion": "FTP",// Puede ser FTP ó SFTP
   "ServerSFTP": "ftp.optimi.com.ar", // "181.30.184.162"
   "UserSFTP": "optimico", //"argus"
   "PassSFTP": "=aT;$6@*xtmf)DGp", //"ArgUs$08"

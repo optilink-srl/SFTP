@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SFTPProyect
 {
-    public class SFTP
+    public class SFTP : IxFTP
     {
         public string ServerSFTP { get; set; }
         public string userSFTP { get; set; }
