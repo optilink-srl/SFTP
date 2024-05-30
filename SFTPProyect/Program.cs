@@ -11,24 +11,35 @@ namespace SFTPProyect
         static void Main(string[] args)
         {
             config = ini();
-            //
-            //eventoTimer(0);
             Timer t = new Timer(eventoTimer,0 , 0, config.T*1000);
             while(true)
             {
                 string a = Console.ReadLine();
                 if (a == "exit")
                 {
+                    Tools.printlog("Aplicacion cerrada por el usuario");
                     return;
                 }
-                
+                if (a == "cls")
+                {
+                    Console.Clear();
+                }
             }
         }
         private static void eventoTimer(object State)
         {
             SFTP sftp = new SFTP(config.ServerSFTP, config.UserSFTP, config.PassSFTP, config.PortSFTP);
-            sftp.upload(config.RemoteDirPeticiones, config.LocalDirPeticiones, config.LocalDirBackUp);
-            sftp.download(config.RemoteDirResultados, config.LocalDirResultados, config.RemoteDelete);
+            if (config.Upload == 1)
+            {
+                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando derivaciones a enviar");
+                sftp.upload(config.RemoteDirPeticiones, config.LocalDirPeticiones, config.LocalDirBackUp, config.Ext);
+
+            }
+            if (config.Download == 1)
+            {
+                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando derivaciones a descargar");
+                sftp.download(config.RemoteDirResultados, config.LocalDirResultados, config.RemoteDelete,config.Ext);
+            }
         }
 
         public static Config ini()
@@ -42,20 +53,5 @@ namespace SFTPProyect
             }
             return JsonConvert.DeserializeObject<Config>(stringJson);
         }
-
-        /*static void ini()
-        {
-            ServerSFTP = @"181.30.184.162";
-            userSFTP = "argus";
-            passSFTP= "ArgUs$08";
-            PortSFTP=2022;
-            RemoteDirPeticiones = "/peticiones/";
-            RemoteDirResultados = "/resultados/";
-            LocalDirPeticiones="C:\\SFTP\\Peticiones";
-            LocalDirResultados="C:\\SFTP\\";
-            LocalDirBackUp=LocalDirResultados+"bkp\\";
-            RemoteDelete=true;
-            T = 10;//segundos
-        }*/
     }
 }

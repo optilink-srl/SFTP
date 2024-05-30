@@ -17,5 +17,8 @@ namespace SFTPProyect
         public string LocalDirBackUp { get; set; }
         public bool RemoteDelete { get; set; }
         public int T { get; set; }
+        public string[] Ext { get; set; }
+        public int Upload { get; set; }
+        public int Download { get; set; }
     }
 }
