@@ -3,17 +3,18 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading;
-using System.Timers;
+//using System.Timers;
 
 namespace SFTPProyect
 {
     class Program
     {
         private static Config config;
+        private static bool isRunning = false;
         static void Main(string[] args)
         {
             config = ini();
-            //System.Timers.Timer t = new System.Timers.Timer(eventoTimer,0 , 0, config.T*1000);
+            Timer t = new Timer(eventoTimer,0 , 0, config.T*1000);
             
 
             while (true)
@@ -32,6 +33,11 @@ namespace SFTPProyect
         }
         private static void eventoTimer(object State)
         {
+            if (isRunning)
+            {
+                return;
+            }
+            isRunning = true;
             IxFTP xftp;
             switch (config.TipoConexion)
             {
@@ -58,6 +64,7 @@ namespace SFTPProyect
                 Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + ": Verificando archivos para descargar");
                 xftp.download(config.RemoteDirResultados, config.LocalDirResultados, config.RemoteDelete,config.Ext);
             }
+            isRunning = false;
         }
 
         public static Config ini()

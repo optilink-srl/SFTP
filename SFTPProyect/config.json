@@ -1,18 +1,18 @@
-{
+﻿{
   "TipoConexion": "FTP", // Puede ser FTP ó SFTP
-  "ServerSFTP": "ftp.optimi.com.ar", // "181.30.184.162"
-  "UserSFTP": "optimico", //"argus"
-  "PassSFTP": "=aT;$6@*xtmf)DGp", //"ArgUs$08"
+  "ServerSFTP": "ftp.manlab.com.ar", // "181.30.184.162"
+  "UserSFTP": "LabSchmukler6280", //"argus"
+  "PassSFTP": "LabSchmukler$6280", //"ArgUs$08"
   "PortSFTP": 21, //2022
-  "RemoteDirPeticiones": "/2023PRUEBA/TOPO/", // "/peticiones/",
-  "RemoteDirResultados": "/2023PRUEBA/TOPO/", //"/resultados/3256/",
-  "LocalDirPeticiones": "C:\\SFTP\\peticiones",
-  "LocalDirResultados": "C:\\SFTP\\Loop",
-  "LocalDirBackUp": "C:\\SFTP\\peticiones\\bkp",
+  "RemoteDirPeticiones": "/Ordenes/", // "/peticiones/",
+  "RemoteDirResultados": "/Resultados/", //"/resultados/3256/",
+  "LocalDirPeticiones": "C:\\OPTIMI\\Derivaciones\\3\\ENVIAR",
+  "LocalDirResultados": "C:\\Interface\\MANLAB\\FTP\\Resultados",
+  "LocalDirBackUp": "C:\\Interface\\MANLAB\\FTP\\Resultados\\bkp",
   "RemoteDelete": true,
   "T": 10,
-  "Ext": [ "txt", "res", "xlsx" ],
-  "Upload": 1,
+  "Ext": [ "txt" ],
+  "Upload": 0,
   "Download": 1
 
 }
